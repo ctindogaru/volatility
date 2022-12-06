@@ -8,7 +8,7 @@ volatility = "FUWQwWXaBiu1h6b8tmTv2H1d4pvXD342ytC5vR3dwEX4"
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "/Users/constantindogaru/.config/solana/id.json"
 
 [scripts]
