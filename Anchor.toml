@@ -2,7 +2,7 @@
 seeds = false
 skip-lint = false
 [programs.localnet]
-volatility = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+volatility = "FUWQwWXaBiu1h6b8tmTv2H1d4pvXD342ytC5vR3dwEX4"
 
 [registry]
 url = "https://api.apr.dev"
