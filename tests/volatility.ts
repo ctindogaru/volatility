@@ -46,7 +46,7 @@ describe("volatility", () => {
     const aggregator = await aggregatorAccount.loadData();
 
     const tx = await program.methods
-      .calculateVolatility()
+      .getStandardDeviationInPastDay()
       .accounts({
         historyAccountInfo: aggregator.historyBuffer,
       })

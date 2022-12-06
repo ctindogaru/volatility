@@ -13,11 +13,9 @@ declare_id!("FUWQwWXaBiu1h6b8tmTv2H1d4pvXD342ytC5vR3dwEX4");
 pub mod volatility {
     use super::*;
 
-    pub fn initialize(_ctx: Context<Initialize>) -> Result<()> {
-        Ok(())
-    }
-
-    pub fn calculate_volatility(ctx: Context<CalculateVolatility>) -> Result<u64> {
+    pub fn get_standard_deviation_in_past_day(
+        ctx: Context<GetStandardDeviationInPastDay>,
+    ) -> Result<u64> {
         let history_buffer = AggregatorHistoryBuffer::new(&ctx.accounts.history_account_info)?;
         let current_timestamp = Clock::get()?.unix_timestamp;
 
