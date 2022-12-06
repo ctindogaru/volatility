@@ -2,6 +2,7 @@ pub mod context;
 pub mod utils;
 use anchor_lang::prelude::*;
 use context::*;
+use spl_math::approximations::sqrt;
 use switchboard_v2::AggregatorHistoryBuffer;
 use utils::*;
 
@@ -47,8 +48,10 @@ pub mod volatility {
         // Step 4: Compute the average deviation.
         average_deviation /= 24;
 
-        msg!("Result {:?}!", average_deviation);
+        // Step 5: Compute the standard deviation.
+        let standard_deviation = sqrt(average_deviation).unwrap();
+        msg!("Standard deviation: {:?}", standard_deviation);
 
-        Ok(average_deviation)
+        Ok(standard_deviation)
     }
 }
