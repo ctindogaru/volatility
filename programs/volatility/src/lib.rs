@@ -14,9 +14,9 @@ declare_id!("FUWQwWXaBiu1h6b8tmTv2H1d4pvXD342ytC5vR3dwEX4");
 pub mod volatility {
     use super::*;
 
-    pub fn get_standard_deviation_in_past_day(
-        ctx: Context<GetStandardDeviationInPastDay>,
-    ) -> Result<u64> {
+    pub fn get_standard_deviation_for_past_day(
+        ctx: Context<GetStandardDeviationForPastDay>,
+    ) -> Result<()> {
         let history_buffer = AggregatorHistoryBuffer::new(&ctx.accounts.history_account_info)?;
         let current_timestamp = Clock::get()?.unix_timestamp;
 
@@ -48,10 +48,10 @@ pub mod volatility {
         // Step 4: Compute the average deviation.
         average_deviation /= 24;
 
-        // Step 5: Compute the standard deviation.
+        // Step 5: Compute the standard deviation. Note that the result will have a precision of 2.
         let standard_deviation = sqrt(average_deviation).unwrap();
         msg!("Standard deviation: {:?}", standard_deviation);
 
-        Ok(standard_deviation)
+        Ok(())
     }
 }
