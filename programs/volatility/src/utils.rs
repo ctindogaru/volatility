@@ -1,6 +1,6 @@
 use switchboard_v2::SwitchboardDecimal;
 
-const DEFAULT_DECIMALS: u32 = 6;
+const DEFAULT_DECIMALS: u32 = 2;
 
 pub fn to_default_decimals(price: &SwitchboardDecimal) -> u64 {
     if price.scale < DEFAULT_DECIMALS {
