@@ -7,6 +7,9 @@ import { SwitchboardTestContext } from "@switchboard-xyz/sbv2-utils";
 export const AGGREGATOR_PUBKEY: anchor.web3.PublicKey =
   new anchor.web3.PublicKey("GvDMxPzN1sCj7L26YDK2HnMRXEQmQ2aemov8YBtPS7vR");
 
+export const sleep = (ms: number): Promise<any> =>
+  new Promise((s) => setTimeout(s, ms));
+
 describe("volatility", () => {
   // Configure the client to use the local cluster.
   anchor.setProvider(anchor.AnchorProvider.env());
@@ -43,5 +46,14 @@ describe("volatility", () => {
       })
       .rpc();
     console.log("Your transaction signature", tx);
+
+    await sleep(5000);
+
+    const confirmedTxn = await program.provider.connection.getParsedTransaction(
+      tx,
+      "confirmed"
+    );
+
+    console.log(JSON.stringify(confirmedTxn?.meta?.logMessages, undefined, 2));
   });
 });
