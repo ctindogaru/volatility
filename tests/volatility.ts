@@ -4,7 +4,13 @@ import { Volatility } from "../target/types/volatility";
 import { AggregatorAccount } from "@switchboard-xyz/switchboard-v2";
 import { SwitchboardTestContext } from "@switchboard-xyz/sbv2-utils";
 
-export const AGGREGATOR_PUBKEY: anchor.web3.PublicKey =
+export const BTC_AGGREGATOR_PUBKEY: anchor.web3.PublicKey =
+  new anchor.web3.PublicKey("8SXvChNYFhRq4EZuZvnhjrB3jJRQCv4k3P4W6hesH3Ee");
+
+export const ETH_AGGREGATOR_PUBKEY: anchor.web3.PublicKey =
+  new anchor.web3.PublicKey("HNStfhaLnqwF2ZtJUizaA9uHDAVB976r2AgTUx9LrdEo");
+
+export const SOL_AGGREGATOR_PUBKEY: anchor.web3.PublicKey =
   new anchor.web3.PublicKey("GvDMxPzN1sCj7L26YDK2HnMRXEQmQ2aemov8YBtPS7vR");
 
 export const sleep = (ms: number): Promise<any> =>
@@ -35,7 +41,7 @@ describe("volatility", () => {
   it("Reads an aggregator history buffer", async () => {
     const aggregatorAccount = new AggregatorAccount({
       program: switchboard.program,
-      publicKey: AGGREGATOR_PUBKEY,
+      publicKey: BTC_AGGREGATOR_PUBKEY,
     });
     const aggregator = await aggregatorAccount.loadData();
 
